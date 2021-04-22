@@ -6,8 +6,10 @@ export function* syncChannel(channel, options) {
   try {
     while (true) {
       const data = yield take(channel)
-      const transformedData = transform ? transform(data) : data
-      yield put(successActionCreator(transformedData))
+      if (data.snapshot) {
+        const transformedData = transform ? transform(data.snapshot) : data.snapshot
+        yield put(successActionCreator(transformedData))
+      }
     }
   } catch (err) {
     /* eslint-disable no-console */

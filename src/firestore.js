@@ -46,8 +46,8 @@ function channel(
 
   const channel = eventChannel(emit => {
     const unsubscribe = snapshotListenOptions
-      ? ref.onSnapshot(snapshotListenOptions, emit)
-      : ref.onSnapshot(emit)
+      ? ref.onSnapshot(snapshotListenOptions, snapshot => emit({ snapshot }), error => emit(new Error(error.message)))
+      : ref.onSnapshot(snapshot => emit({ snapshot }), error => emit(new Error(error.message)))
 
     // Returns unsubscribe function
     return unsubscribe
