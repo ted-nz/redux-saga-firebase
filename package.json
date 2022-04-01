@@ -31,8 +31,13 @@
     "@babel/runtime": "^7.4.4"
   },
   "peerDependencies": {
-    "firebase": "^5.0.4",
+    "firebase": ">=5.0.4",
     "redux-saga": "^1.0.0"
+  },
+  "peerDependenciesMeta": {
+    "firebase": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
