@@ -13,6 +13,7 @@
     "build:win": "yarn del&&set NODE_ENV=production&&babel src --out-dir dist",
     "version": "cp -r docs/reference/{dev,v$(jq .version -r package.json)} && git add docs/reference/v$(jq .version -r package.json)",
     "prepare": "yarn build",
+    "prepack": "yarn build",
     "prepublishOnly": "yarn test",
     "pretest": "yarn test:lint && yarn test:format && yarn test:ts",
     "test": "NODE_ENV=test jest",
@@ -67,5 +68,6 @@
         "statements": 95
       }
     }
-  }
+  },
+  "packageManager": "yarn@1.22.15"
 }
